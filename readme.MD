@@ -1,4 +1,4 @@
-A javascript function that test if 2 line segments are intersected.
+A javaScript function that tests if 2 line segments are intersected.
 
 ### How to use ###
 
@@ -22,7 +22,7 @@ A boolean.
 
 ### How it works ###
 
-A stupid method. May be written in my blog later.
+A stupid method. May be written in my [blog][1] later.
 
 ---
 
@@ -34,3 +34,7 @@ The following are just what I have read, not the method I have used.
 
 http://www.csie.ntnu.edu.tw/~u91029/Point.html
 https://silverwind1982.pixnet.net/blog/post/165223625
+
+
+
+[1]: https://maxium0526.github.io/blog
