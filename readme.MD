@@ -22,7 +22,7 @@ A boolean.
 
 ### How it works ###
 
-A stupid method. May be written in my [blog][1] later.
+A stupid method. May be written in my [blog][1] later. I do not know whether this method exists before. If yes, let me know, I will put it into references.
 
 ---
 
