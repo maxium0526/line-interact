@@ -12,15 +12,6 @@ console.log(Line.isIntersected(line1, line2));
 console.log("Black: Before rotate.");
 console.log("Blue: After rotate.");
 
-// var line = randomLine().draw(ctx);
-
-// ctx.fillStyle = "#0000FF";
-// ctx.strokeStyle = "#0000FF";
-// line.corotate(0,0,Math.PI / 4).draw(ctx);
-
-
-
-
 function prepareCoordinate(){
 	ctx.beginPath();
 	ctx.moveTo(-200,0);
