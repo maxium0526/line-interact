@@ -44,6 +44,18 @@ class Line{
 		this.p2 = p2;
 	}
 
+	corotate(x = 0, y = 0, angle = 0){
+		return new Line(this.p1.corotate(x, y, angle), this.p2.corotate(x, y, angle));//just corotate two points separately.
+	}
+
+	translate(x, y){
+		return new Line(this.p1.translate(x, y), this.p2.translate(x, y));
+	}
+
+	getAngle(){//the angle between itself and x-axis. In other words, atan(slape).
+		return this.p1.getAngle(this.p2.x, this.p2.y);//use getAngle() of Point class, another point as origin point.
+	}
+
 	draw(ctx){
 		ctx.lineWidth = 3;
 		ctx.beginPath();
@@ -56,17 +68,9 @@ class Line{
 		return this;
 	}
 
-	getAngle(){//the angle between itself and x-axis. In other words, atan(slape).
-		return this.p1.getAngle(this.p2.x, this.p2.y);//use getAngle() of Point class, another point as origin point.
-	}
 
-	corotate(x = 0, y = 0, angle = 0){
-		return new Line(this.p1.corotate(x, y, angle), this.p2.corotate(x, y, angle));//just corotate two points separately.
-	}
 
-	translate(x, y){
-		return new Line(this.p1.translate(x, y), this.p2.translate(x, y));
-	}
+	
 }
 
 var canvas = document.getElementById('canvas');
