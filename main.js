@@ -9,9 +9,6 @@ var line2 = randomLine().draw(ctx);
 
 console.log(Line.isIntersected(line1, line2));
 
-console.log("Black: Before rotate.");
-console.log("Blue: After rotate.");
-
 function prepareCoordinate(){
 	ctx.beginPath();
 	ctx.moveTo(-200,0);

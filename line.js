@@ -126,3 +126,24 @@ class Line{
 		return Line.isOverlappedOnAxis(rotatedLine, rotatedReferenceLine, 'y');
 	}
 }
+
+
+/**
+ * Quick use, test if 2 lines are intersected.
+ *
+ * @param      {<float>}  x1      Line A -> Point A -> x coordinate
+ * @param      {<float>}  y1      Line A -> Point A -> y coordinate
+ * @param      {<float>}  x2      Line A -> Point B -> x coordinate
+ * @param      {<float>}  y2      Line A -> Point B -> y coordinate
+ * @param      {<float>}  x3      Line B -> Point A -> x coordinate
+ * @param      {<float>}  y3      Line B -> Point A -> y coordinate
+ * @param      {<float>}  x4      Line B -> Point B -> x coordinate
+ * @param      {<float>}  y4      Line B -> Point B -> y coordinate
+ * @return     {<boolean>}  { if 2 lines are intersected, true, otherwise false. }
+ */
+function testIntersect(x1, y1, x2, y2, x3, y3, x4, y4){
+	return Line.isIntersected(
+		new Line(new Point(x1, y1), new Point(x2, y2)).draw(ctx),
+		new Line(new Point(x3, y3), new Point(x4, y4)).draw(ctx)
+		);
+}
