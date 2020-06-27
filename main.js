@@ -1,13 +1,25 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 ctx.translate(200, 200);
-
 prepareCoordinate();
 
-var line1 = randomLine().draw(ctx);
-var line2 = randomLine().draw(ctx);
+var line1 = null;
+var line2 = null;
 
-console.log(Line.isIntersected(line1, line2));
+$('#generate-lines').on('click', function(){
+	ctx.clearRect(-200, -200, 400, 400);
+	prepareCoordinate();
+	line1 = randomLine();
+	line2 = randomLine();
+	if(Line.isIntersected(line1, line2)){
+		ctx.strokeStyle = "#FF0000";
+		ctx.fillStyle = "#FF0000";
+	}
+	line1.draw(ctx);
+	line2.draw(ctx);
+	ctx.strokeStyle = "#000000";
+	ctx.fillStyle = "#000000";
+})
 
 function prepareCoordinate(){
 	ctx.beginPath();
