@@ -20,8 +20,32 @@
 		<button type="button" class="btn btn-primary" id="generate-lines">Randomly Generate 2 Lines!</button>
 	</div>	
 	<div class="col-12 mx-auto my-4">
-		<canvas id="canvas" width="400" height="400" style=""></canvas>
+		<canvas id="canvas-main" width="400" height="400" style=""></canvas>
 	</div>
+	<p class="h3 text-center" id="intersect-text">maxium0526@github.com</p>
+	<div class="container col-8 mt-5">
+		<div class="row">
+			<p class="h5">How it works:</p>
+		</div>
+		<div class="row">
+			<p>First rotate both line segments around the origin such that one of them is parallel to x-axis. Do it two times such that 2 lines are parallel to x-axis respectively in one case. So there are 2 coordinate systems now.</p>
+			<p>Observe the coordinate systems from left to right, if they are all overlapped in the two coordinate systems, the are intersected. </p>
+		</div>
+		<div class="row mb-3">
+			<div class="col-6"><canvas id="canvas-r1" width="400" height="400" style=""></canvas></div>
+			<div class="col-6"><canvas id="canvas-r2" width="400" height="400" style=""></canvas></div>
+		</div>
+		<div class="row">
+			<div class="col-5" style="text-align: right;" id="result-r1"></div>
+			<div class="col-2" style="text-align: center;">&&</div>
+			<div class="col-5" style="text-align: left;" id="result-r2"></div>
+		</div>
+		<div class="row">
+			<div class="col" style="text-align: center;" id="result"></div>
+		</div>
+	</div>
+
+	<br><br><br><br><br><br><br><br><br><br>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
