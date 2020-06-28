@@ -31,6 +31,11 @@ class Point{
 		if(xOffset<0 && yOffset>0) angle = Math.PI + raw;//第二象限
 		if(xOffset<0 && yOffset<0) angle = Math.PI + raw;//第三象限
 		if(xOffset>0 && yOffset<0) angle = 2 * Math.PI + raw;//第四象限
+		if(xOffset>0 && yOffset==0) angle = 0;//正x軸
+		if(xOffset<0 && yOffset==0) angle = Math.PI; //負x軸
+		if(xOffset==0 && yOffset>0) angle = Math.PI / 2;//正y軸
+		if(xOffset==0 && yOffset<0) angle = Math.PI * 3 / 2;//負y軸
+		if(xOffset==0 && yOffset==0) angle = null;
 		return angle;
 	}
 
