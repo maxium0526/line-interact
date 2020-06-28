@@ -22,15 +22,15 @@ class Point{
 	}
 
 	getAngle(x, y){ //angle between the line of 2 points and x-axis
-		let slape = Math.atan((this.y-y) / (this.x-x));//this is just slape
+		let raw = Math.atan((this.y-y) / (this.x-x));//this is just raw angle, not considering the position relationship of two points
 
 		let angle = null;
 		let xOffset = this.x - x;
 		let yOffset = this.y - y;
-		if(xOffset>0 && yOffset>0) angle = slape;//第一象限
-		if(xOffset<0 && yOffset>0) angle = Math.PI + slape;//第二象限
-		if(xOffset<0 && yOffset<0) angle = Math.PI + slape;//第三象限
-		if(xOffset>0 && yOffset<0) angle = 2 * Math.PI + slape;//第四象限
+		if(xOffset>0 && yOffset>0) angle = raw;//第一象限
+		if(xOffset<0 && yOffset>0) angle = Math.PI + raw;//第二象限
+		if(xOffset<0 && yOffset<0) angle = Math.PI + raw;//第三象限
+		if(xOffset>0 && yOffset<0) angle = 2 * Math.PI + raw;//第四象限
 		return angle;
 	}
 
