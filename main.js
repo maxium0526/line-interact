@@ -24,7 +24,8 @@ $('#generate-lines').on('click', function(){
 	if(Line.isIntersected(line1, line2)){
 		ctx.strokeStyle = "#FF0000";
 		ctx.fillStyle = "#FF0000";
-		$('#intersect-text').text('They are intersected!');
+		let intersectionPoint = Line.calcIntersectionPoint(line1, line2).draw(ctx);
+		$('#intersect-text').text("They are intersected at (" + (Math.floor(intersectionPoint.x * 100) / 100) + ', ' + (Math.floor(intersectionPoint.y * 100) / 100) + ')!');
 	} else {
 		$('#intersect-text').text('They are NOT intersected.');
 	}
