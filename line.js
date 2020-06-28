@@ -4,7 +4,7 @@ class Point{
 		this.y = y;
 	}
 
-	corotate(x, y, angle){
+	rotate(x, y, angle){
 		if(x == this.x && y == this.y) return new Point(x, y);
 
 		let length2 = Math.pow(x-this.x, 2) + Math.pow(y-this.y, 2);//distance between itself and origin
@@ -52,8 +52,8 @@ class Line{
 		this.p2 = p2;
 	}
 
-	corotate(x = 0, y = 0, angle = 0){
-		return new Line(this.p1.corotate(x, y, angle), this.p2.corotate(x, y, angle));//just corotate two points separately.
+	rotate(x = 0, y = 0, angle = 0){
+		return new Line(this.p1.rotate(x, y, angle), this.p2.rotate(x, y, angle));//just rotate two points separately.
 	}
 
 	translate(x, y){
@@ -134,8 +134,8 @@ class Line{
 		//rotation process
 		let rotatePoint = new Point(0, 0);
 		let rotateAngle = referenceLine.getAngle();
-		let rotatedLine = line.corotate(rotatePoint.x, rotatePoint.y, -rotateAngle);
-		let rotatedReferenceLine = referenceLine.corotate(rotatePoint.x, rotatePoint.y, -rotateAngle);
+		let rotatedLine = line.rotate(rotatePoint.x, rotatePoint.y, -rotateAngle);
+		let rotatedReferenceLine = referenceLine.rotate(rotatePoint.x, rotatePoint.y, -rotateAngle);
 
 		return Line.isOverlappedOnAxis(rotatedLine, rotatedReferenceLine, 'y');
 	}

@@ -36,8 +36,8 @@ $('#generate-lines').on('click', function(){
 	//r1
 	r1.clearRect(-200, -200, 400, 400);
 	prepareCoordinate(r1);
-	let r1n1 = line1.corotate(0, 0, -line1.getAngle());
-	let r1n2 = line2.corotate(0, 0, -line1.getAngle());
+	let r1n1 = line1.rotate(0, 0, -line1.getAngle());
+	let r1n2 = line2.rotate(0, 0, -line1.getAngle());
 	r1n1.draw(r1);
 	r1n2.draw(r1);
 	if(Line.__isOverLappedOnRotatedAxis__(line2, line1)){
@@ -55,8 +55,8 @@ $('#generate-lines').on('click', function(){
 	//r2
 	r2.clearRect(-200, -200, 400, 400);
 	prepareCoordinate(r2);
-	let r2n1 = line1.corotate(0, 0, -line2.getAngle());
-	let r2n2 = line2.corotate(0, 0, -line2.getAngle());
+	let r2n1 = line1.rotate(0, 0, -line2.getAngle());
+	let r2n2 = line2.rotate(0, 0, -line2.getAngle());
 	r2n1.draw(r2);
 	r2n2.draw(r2);
 	if(Line.__isOverLappedOnRotatedAxis__(line1, line2)){
