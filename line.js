@@ -70,6 +70,20 @@ class Line{
 		return this.p1.getAngle(this.p2.x, this.p2.y);//use getAngle() of Point class, another point as origin point.
 	}
 
+	getSlape(){
+		return Math.tan(this.getAngle());
+	}
+
+	getInterceptX(asStraightLine = false){
+		if(!asStraightLine && this.p1.y * this.p2.y>0) return null;
+		return this.p1.x - this.p1.y / this.getSlape();
+	}
+
+	getInterceptY(asStraightLine = false){
+		if(!asStraightLine && this.p1.x * this.p2.x>0) return null;
+		return this.p1.y - this.p1.x * this.getSlape();
+	}
+
 	draw(ctx){
 		ctx.lineWidth = 3;
 		ctx.beginPath();
@@ -124,6 +138,19 @@ class Line{
 		let rotatedReferenceLine = referenceLine.corotate(rotatePoint.x, rotatePoint.y, -rotateAngle);
 
 		return Line.isOverlappedOnAxis(rotatedLine, rotatedReferenceLine, 'y');
+	}
+
+	static calcIntersectionPoint(a, b, asStraightLine = false){
+		if(!asStraightLine && !Line.isIntersected(a, b)) return null;
+		let aSlape = a.getSlape();
+		let aInterceptY = a.getInterceptY(true);
+		let bSlape = b.getSlape();
+		let bInterceptY = b.getInterceptY(true);
+
+		let x = - (aInterceptY - bInterceptY) / (aSlape - bSlape);
+		let y = aSlape * x + aInterceptY;
+
+		return new Point(x,y);
 	}
 }
 
