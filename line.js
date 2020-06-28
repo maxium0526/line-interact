@@ -174,3 +174,23 @@ function testIntersect(x1, y1, x2, y2, x3, y3, x4, y4){
 		new Line(new Point(x3, y3), new Point(x4, y4)).draw(ctx)
 		);
 }
+
+/**
+ * Quick use, calculate the intersection point of 2 line segments.
+ *
+ * @param      {<float>}  x1      Line A -> Point A -> x coordinate
+ * @param      {<float>}  y1      Line A -> Point A -> y coordinate
+ * @param      {<float>}  x2      Line A -> Point B -> x coordinate
+ * @param      {<float>}  y2      Line A -> Point B -> y coordinate
+ * @param      {<float>}  x3      Line B -> Point A -> x coordinate
+ * @param      {<float>}  y3      Line B -> Point A -> y coordinate
+ * @param      {<float>}  x4      Line B -> Point B -> x coordinate
+ * @param      {<float>}  y4      Line B -> Point B -> y coordinate
+ * @return     {<Point>}  { If 2 line segments are intersected, return a Point object that represents the intersection point of 2 line segments. Use ['x'] and ['y'] to get the coordinate; If they are not interseted, return null. }
+ */
+function calcIntersectPoint(x1, y1, x2, y2, x3, y3, x4, y4){
+	return point = Line.calcIntersectionPoint(
+		new Line(new Point(x1, y1), new Point(x2, y2)).draw(ctx),
+		new Line(new Point(x3, y3), new Point(x4, y4)).draw(ctx)
+		);
+}
