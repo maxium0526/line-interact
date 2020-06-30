@@ -46,4 +46,15 @@ class Polygon{
 		}
 		return this;
 	}
+
+	static isIntersected(a, b){
+		for(let lineA of a.getLines()){
+			for(let lineB of b.getLines()){
+				if(Line.isIntersected(lineA, lineB)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
