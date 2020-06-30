@@ -31,8 +31,8 @@ class Polygon{
 		for(let point of this.points){
 			point.draw(ctx);
 		}
-		for(let i=0; i<this.points.length; i++){
-			new Line(this.points[i], this.points[(i+1)%(this.points.length)]).draw(ctx);
+		for(let line of this.getLines()){
+			line.draw(ctx);
 		}
 		return this;
 	}
