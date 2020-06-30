@@ -3,6 +3,14 @@ class Polygon{
 		this.points = points;
 	}
 
+	getLines(){
+		let lines = [];
+		for(let i=0; i<this.points.length; i++){
+			lines.push(new Line(this.points[i], this.points[(i+1)%(this.points.length)]));
+		}
+		return lines;
+	}
+
 	rotate(x, y, angle){
 		return new Polygon(this.points.map(p=>p.rotate(x, y, angle)));
 	}
