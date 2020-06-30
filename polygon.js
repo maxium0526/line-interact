@@ -27,6 +27,16 @@ class Polygon{
 		return new Line(this.points[lineNum], this.points[lineNum+1]).getSlape();
 	}
 
+	getInterceptX(){
+		let intercepts = this.getLines().map(line=>line.getInterceptX()).filter(p=>p!=null);
+		return [...new Set(intercepts)];
+	}
+
+	getInterceptY(){
+		let intercepts = this.getLines().map(line=>line.getInterceptY()).filter(p=>p!=null);
+		return [...new Set(intercepts)];
+	}
+
 	draw(ctx){
 		for(let point of this.points){
 			point.draw(ctx);
