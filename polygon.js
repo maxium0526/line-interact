@@ -57,4 +57,15 @@ class Polygon{
 		}
 		return false;
 	}
+
+	static calcIntersectionPoint(a, b){
+		let points = [];
+		for(let lineA of a.getLines()){
+			for(let lineB of b.getLines()){
+				let point = Line.calcIntersectionPoint(lineA, lineB);
+				if(point!=null) points.push(point);
+			}
+		}
+		return points;
+	}
 }
