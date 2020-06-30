@@ -8,7 +8,7 @@ class Polygon{
 	}
 
 	translate(x, y){
-		return new Polygon(this.points.map(p=>p.rotate(x, y, angle)));
+		return new Polygon(this.points.map(p=>p.translate(x, y)));
 	}
 
 	getAngle(lineNum){
