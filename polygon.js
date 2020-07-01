@@ -80,3 +80,32 @@ class Polygon{
 		return points;
 	}
 }
+
+class RectangleBuilder{
+	constructor(){
+		this.x = 0;
+		this.y = 0;
+		this.angle = 0;
+	}
+	xy(x, y){
+		this.x = x;
+		this.y = y;
+		return this;
+	}
+	wt(width, height){
+		this.width = width;
+		this.height = height;
+		return this;
+	}
+	rotate(angle){
+		this.angle = angle;
+		return this;
+	}
+	build(){
+		let p1 = new Point(this.x, this.y);
+		let p2 = new Point(this.x + this.width, this.y);
+		let p3 = new Point(this.x + this.width, this.y + this.height);
+		let p4 = new Point(this.x, this.y + this.height);
+		return new Polygon([p1, p2, p3, p4]).rotate(this.x, this.y, this.angle);
+	}
+}
