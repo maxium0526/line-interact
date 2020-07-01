@@ -109,3 +109,9 @@ class RectangleBuilder{
 		return new Polygon([p1, p2, p3, p4]).rotate(this.x, this.y, this.angle);
 	}
 }
+
+class PolygonItem extends Polygon{
+	constructor(poly, mass){
+		super(poly.points);
+	}
+}
