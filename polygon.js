@@ -37,6 +37,17 @@ class Polygon{
 		return [...new Set(intercepts)];
 	}
 
+	getSimpleCentroid(){
+		let sumx = 0;
+		let sumy = 0;
+		let numPoints = this.points.length;
+		for(let point of this.points){
+			sumx += point.x;
+			sumy += point.y;
+		}
+		return new Point(sumx / numPoints, sumy / numPoints);
+	}
+
 	draw(ctx){
 		for(let point of this.points){
 			point.draw(ctx);
