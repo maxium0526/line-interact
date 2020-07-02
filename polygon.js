@@ -172,42 +172,39 @@ class PolygonItem{
 		let bx = (bv.x * (b.mass - a.mass) + 2 * a.mass * av.x) / (a.mass + b.mass);		
 		let by = (bv.y * (b.mass - a.mass) + 2 * a.mass * av.y) / (a.mass + b.mass);
 
-		console.log(ax, ay, bx, by)
-
 		let getA = new Vector(ax, ay);
 		let getB = new Vector(bx, by);
 
-		console.log(getA, getB)
+		getA.draw(ctx, intersectedCentroid.x, intersectedCentroid.y);
+		getB.draw(ctx, intersectedCentroid.x, intersectedCentroid.y);
 
 		let ra = new Line(a.getCenter(), new Point(x, y));
-		let rb = new Line(a.getCenter(), new Point(x, y));
+		let rb = new Line(b.getCenter(), new Point(x, y));
 
 		//轉到十字架和座標軸平行
-		getA = getA.rotate(ra.getAngle());
-		getB = getB.rotate(rb.getAngle());
-
-		console.log(getA, getB)
+		getA = getA.rotate(-ra.getAngle());
+		getB = getB.rotate(-rb.getAngle());
 
 		//開拆
-		let getAAngVelo = new Vector(0, getA.y).rotate(-ra.getAngle());
-		let getAVelo = new Vector(getA.x, 0).rotate(-ra.getAngle());
+		let getALinearVelo = new Vector(0, getA.y);
+		let getAAngVelo = getALinearVelo.y / ra.getLength();
+		let getAVelo = new Vector(getA.x, 0).rotate(ra.getAngle());
 
-		let getBAngVelo = new Vector(0, getB.y).rotate(-rb.getAngle());
-		let getBVelo = new Vector(getB.x, 0).rotate(-rb.getAngle());
-
+		let getBLinearVelo = new Vector(0, getB.y);
+		let getBAngVelo = getBLinearVelo.y / rb.getLength();
+		let getBVelo = new Vector(getB.x, 0).rotate(rb.getAngle());
 
 		a.velo = getAVelo;
-		a.angVelo = getAAngVelo.y;	
-
-		console.log(a, b)
+		a.angVelo = getAAngVelo;	
 
 		b.velo = getBVelo;
-		b.angVelo = getBAngVelo.y;
+		b.angVelo = getBAngVelo;
 
-		//碰撞後立即分開, 防止多之碰撞
+		//碰撞後立即分開, 防止多次碰撞
 		while(Polygon.isIntersected(a.poly, b.poly)){
 			a.poly = a.poly.translate((a.getCenter().x - intersectedCentroid.x) / 100, (a.getCenter().y - intersectedCentroid.y) / 100)
 			b.poly = b.poly.translate((b.getCenter().x - intersectedCentroid.x) / 100, (b.getCenter().y - intersectedCentroid.y) / 100)
 		}
+
 	}
 }
