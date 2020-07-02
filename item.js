@@ -39,13 +39,6 @@ class PolygonItem{
 
 		let intersectedPoints = Polygon.calcIntersectionPoint(a.poly, b.poly);
 		let intersectedCentroid = new Polygon(intersectedPoints).getSimpleCentroid();
-
-		// let ax = (a.velo.x * (a.mass - b.mass) + 2 * b.mass * b.velo.x) / (a.mass + b.mass);		
-		// let ay = (a.velo.y * (a.mass - b.mass) + 2 * b.mass * b.velo.y) / (a.mass + b.mass);
-		// let bx = (b.velo.x * (b.mass - a.mass) + 2 * a.mass * a.velo.x) / (a.mass + b.mass);
-		// let by = (b.velo.y * (b.mass - a.mass) + 2 * a.mass * a.velo.y) / (a.mass + b.mass);
-		// a.velo = new Vector(ax, ay);
-		// b.velo = new Vector(bx, by); 
 		
 		let x = intersectedCentroid.x;
 		let y = intersectedCentroid.y;
