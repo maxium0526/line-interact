@@ -12,6 +12,10 @@ class Vector{
 		return new Vector(this.x - v.x, this.y - v.y);
 	}
 
+	multiply(constant){
+		return new Vector(this.x * constant, this.y * constant);
+	}
+
 	dot(v){
 		return this.x * v.x + this.y * v.y;
 	}
