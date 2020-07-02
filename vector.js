@@ -16,6 +16,11 @@ class Vector{
 		return this.x * v.x + this.y * v.y;
 	}
 
+	rotate(angle){
+		let newp = new Point(this.x, this.y).rotate(0, 0, angle);
+		return new Vector(newp.x, newp.y);
+	}
+
 	draw(ctx, x=0, y=0){
 		ctx.beginPath();
 		ctx.moveTo(x, y);
