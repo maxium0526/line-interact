@@ -19,7 +19,7 @@ class Vector{
 	draw(ctx, x=0, y=0){
 		ctx.beginPath();
 		ctx.moveTo(x, y);
-		ctx.lineTo(this.x, this.y);
+		ctx.lineTo(this.x + x, this.y + y);
 		ctx.stroke();
 		ctx.beginPath();
 		ctx.arc(x, y, 5, 0, 2 * Math.PI);
