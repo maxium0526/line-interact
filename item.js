@@ -4,6 +4,8 @@ class PolygonItem{
 		this.mass = mass;
 		this.velo = new Vector(0, 0);
 		this.angVelo = 0;
+
+		this.fixed = false;
 	}
 	setVelocity(v){
 		this.velo = v;
@@ -11,6 +13,10 @@ class PolygonItem{
 	}
 	setAngularVelocity(angle){
 		this.angVelo = angle;
+		return this;
+	}
+	fix(fix = true){
+		this.fixed = fix;
 		return this;
 	}
 	getCenter(){
@@ -36,6 +42,7 @@ class PolygonItem{
 	}
 	static touch(a, b){
 		if(!Polygon.isIntersected(a.poly, b.poly)) return;
+		if(a.fixed && b.fixed) return;
 
 		let intersectedPoints = Polygon.calcIntersectionPoint(a.poly, b.poly);
 		let intersectedCentroid = new Polygon(intersectedPoints).getSimpleCentroid();
@@ -48,10 +55,23 @@ class PolygonItem{
 		let bv = b.getSumVelocity(x, y);
 
 		//碰撞後各自得到的速度
-		let ax = (av.x * (a.mass - b.mass) + 2 * b.mass * bv.x) / (a.mass + b.mass);		
-		let ay = (av.y * (a.mass - b.mass) + 2 * b.mass * bv.y) / (a.mass + b.mass);
-		let bx = (bv.x * (b.mass - a.mass) + 2 * a.mass * av.x) / (a.mass + b.mass);		
-		let by = (bv.y * (b.mass - a.mass) + 2 * a.mass * av.y) / (a.mass + b.mass);
+		let ax,ay, bx, by;
+		if(a.fixed && !b.fixed){
+			ax = av.x;
+			ay = av.y;
+			bx = -bv.x;
+			by = -bv.y;
+		} else if(!a.fixed && b.fixed){
+			ax = -av.x;
+			ay = -av.y;
+			bx = bv.x;
+			by = bv.y;
+		} else {
+			ax = (av.x * (a.mass - b.mass) + 2 * b.mass * bv.x) / (a.mass + b.mass);		
+			ay = (av.y * (a.mass - b.mass) + 2 * b.mass * bv.y) / (a.mass + b.mass);
+			bx = (bv.x * (b.mass - a.mass) + 2 * a.mass * av.x) / (a.mass + b.mass);		
+			by = (bv.y * (b.mass - a.mass) + 2 * a.mass * av.y) / (a.mass + b.mass);
+		}
 
 		let getA = new Vector(ax, ay);
 		let getB = new Vector(bx, by);
@@ -80,8 +100,8 @@ class PolygonItem{
 
 		//碰撞後立即分開, 防止多次碰撞
 		while(Polygon.isIntersected(a.poly, b.poly)){
-			a.poly = a.poly.translate((a.getCenter().x - intersectedCentroid.x) / 100, (a.getCenter().y - intersectedCentroid.y) / 100)
-			b.poly = b.poly.translate((b.getCenter().x - intersectedCentroid.x) / 100, (b.getCenter().y - intersectedCentroid.y) / 100)
+			if(!a.fixed) a.poly = a.poly.translate((a.getCenter().x - intersectedCentroid.x) / 100, (a.getCenter().y - intersectedCentroid.y) / 100)
+			if(!b.fixed) b.poly = b.poly.translate((b.getCenter().x - intersectedCentroid.x) / 100, (b.getCenter().y - intersectedCentroid.y) / 100)
 		}
 
 	}
