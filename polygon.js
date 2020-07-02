@@ -175,9 +175,6 @@ class PolygonItem{
 		let getA = new Vector(ax, ay);
 		let getB = new Vector(bx, by);
 
-		getA.draw(ctx, intersectedCentroid.x, intersectedCentroid.y);
-		getB.draw(ctx, intersectedCentroid.x, intersectedCentroid.y);
-
 		let ra = new Line(a.getCenter(), new Point(x, y));
 		let rb = new Line(b.getCenter(), new Point(x, y));
 
@@ -201,10 +198,10 @@ class PolygonItem{
 		b.angVelo = getBAngVelo;
 
 		//碰撞後立即分開, 防止多次碰撞
-		while(Polygon.isIntersected(a.poly, b.poly)){
-			a.poly = a.poly.translate((a.getCenter().x - intersectedCentroid.x) / 100, (a.getCenter().y - intersectedCentroid.y) / 100)
-			b.poly = b.poly.translate((b.getCenter().x - intersectedCentroid.x) / 100, (b.getCenter().y - intersectedCentroid.y) / 100)
-		}
+		// while(Polygon.isIntersected(a.poly, b.poly)){
+		// 	a.poly = a.poly.translate((a.getCenter().x - intersectedCentroid.x) / 100, (a.getCenter().y - intersectedCentroid.y) / 100)
+		// 	b.poly = b.poly.translate((b.getCenter().x - intersectedCentroid.x) / 100, (b.getCenter().y - intersectedCentroid.y) / 100)
+		// }
 
 	}
 }
