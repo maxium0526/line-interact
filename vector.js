@@ -26,4 +26,8 @@ class Vector{
 		ctx.fill();
 		return this;
 	}
+
+	static get(length, angle){
+		return new Vector(length * Math.cos(angle), length * Math.sin(angle));
+	}
 }
