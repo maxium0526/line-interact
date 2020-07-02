@@ -72,7 +72,7 @@ class Line{
 	}
 
 	getAngle(){//the angle between itself and x-axis. In other words, atan(slape).
-		return this.p1.getAngle(this.p2.x, this.p2.y);//use getAngle() of Point class, another point as origin point.
+		return this.p2.getAngle(this.p1.x, this.p1.y);//use getAngle() of Point class, another point as origin point.
 	}
 
 	getSlape(){
