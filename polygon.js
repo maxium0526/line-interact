@@ -110,8 +110,44 @@ class RectangleBuilder{
 	}
 }
 
-class PolygonItem extends Polygon{
-	constructor(poly, mass){
-		super(poly.points);
+class PolygonItem{
+	constructor(poly, mass=1){
+		this.poly = poly;
+		this.mass = mass;
+		this.velo = new Vector(0, 0);
+		this.angVelo = 0;
+	}
+	setVelocity(v){
+		this.velo = v;
+		return this;
+	}
+	setAngularVelocity(angle){
+		this.angVelo = angle;
+		return this;
+	}
+	getCenter(){
+		return this.poly.getSimpleCentroid();
+	}
+	nxt(fps){
+		this.poly = this.poly
+			.translate(this.velo.x / fps, this.velo.y / fps)
+			.rotate(this.getCenter().x, this.getCenter().y, this.angVelo / fps);
+		return this;
+	}
+	draw(ctx){
+		this.poly.draw(ctx);
+	}
+	static touch(a, b){
+		if(!Polygon.isIntersected(a.poly, b.poly)) return;
+
+		let intersectedPoints = Polygon.calcIntersectionPoint(a.poly, b.poly);
+		let intersectedCentroid = new Polygon(intersectedPoints).getSimpleCentroid();
+
+		let ax = (a.velo.x * (a.mass - b.mass) + 2 * b.mass * b.velo.x) / (a.mass + b.mass);		
+		let ay = (a.velo.y * (a.mass - b.mass) + 2 * b.mass * b.velo.y) / (a.mass + b.mass);
+		let bx = (b.velo.x * (b.mass - a.mass) + 2 * a.mass * a.velo.x) / (a.mass + b.mass);
+		let by = (b.velo.y * (b.mass - a.mass) + 2 * a.mass * a.velo.y) / (a.mass + b.mass);
+		a.velo = new Vector(ax, ay);
+		b.velo = new Vector(bx, by);
 	}
 }
