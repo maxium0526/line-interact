@@ -19,7 +19,7 @@ class Engine{
 		let _this = this;
 		let tick = function(){
 			for(let i=0; i<_this.items.length-1; i++){
-				for(let j=i; j<_this.items.length; j++){
+				for(let j=i+1; j<_this.items.length; j++){
 					PolygonItem.touch(_this.items[i], _this.items[j]);
 				}
 			}
