@@ -21,6 +21,10 @@ class Vector{
 		return new Vector(newp.x, newp.y);
 	}
 
+	getLength(){
+		return new Line(new Point(0, 0), new Point(this.x, this.y)).getLength();
+	}
+
 	draw(ctx, x=0, y=0){
 		ctx.beginPath();
 		ctx.moveTo(x, y);
