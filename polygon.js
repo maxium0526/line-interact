@@ -19,6 +19,10 @@ class Polygon{
 		return new Polygon(this.points.map(p=>p.translate(x, y)));
 	}
 
+	// translate(v){
+	// 	return new Polygon(this.points.map(p=>p.translate(v)));
+	// }
+
 	getAngle(lineNum){
 		return new Line(this.points[lineNum], this.points[lineNum+1]).getAngle();
 	}

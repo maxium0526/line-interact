@@ -21,6 +21,10 @@ class Point{
 		return new Point(this.x+x, this.y+y);
 	}
 
+	// translate(v){
+	// 	return new Point(this.x + v.x, this.y + v.y);
+	// }
+
 	getAngle(x, y){ //angle between the line of 2 points and x-axis
 		let raw = Math.atan((this.y-y) / (this.x-x));//this is just raw angle, not considering the position relationship of two points
 
