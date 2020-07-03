@@ -25,8 +25,18 @@ class Vector{
 		return new Vector(newp.x, newp.y);
 	}
 
+	mirror(angle){
+		let diff = angle - this.getAngle();
+		let newAngle = diff * 2 + this.getAngle();
+		return Vector.get(this.getLength(), newAngle);
+	}
+
 	getLength(){
 		return new Line(new Point(0, 0), new Point(this.x, this.y)).getLength();
+	}
+
+	getAngle(){
+		return new Point(this.x, this.y).getAngle(0, 0);
 	}
 
 	draw(ctx, x=0, y=0){
