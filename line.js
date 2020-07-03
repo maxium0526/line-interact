@@ -17,13 +17,9 @@ class Point{
 		return new Point(newx, newy);
 	}
 
-	translate(x, y){
-		return new Point(this.x+x, this.y+y);
+	translate(v){
+		return new Point(this.x + v.x, this.y + v.y);
 	}
-
-	// translate(v){
-	// 	return new Point(this.x + v.x, this.y + v.y);
-	// }
 
 	getAngle(x, y){ //angle between the line of 2 points and x-axis
 		let raw = Math.atan((this.y-y) / (this.x-x));//this is just raw angle, not considering the position relationship of two points
@@ -65,8 +61,8 @@ class Line{
 		return new Line(this.p1.rotate(x, y, angle), this.p2.rotate(x, y, angle));//just rotate two points separately.
 	}
 
-	translate(x, y){
-		return new Line(this.p1.translate(x, y), this.p2.translate(x, y));
+	translate(v){
+		return new Line(this.p1.translate(v), this.p2.translate(v));
 	}
 
 	project(axis){

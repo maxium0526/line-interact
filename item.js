@@ -49,7 +49,7 @@ class PolygonItem{
 		this.velo = this._acce.multiply(1 / fps).add(this.velo);
 		this.angVelo = this.angVelo / 1.005;
 		this.poly = this.poly
-			.translate(this.velo.x / fps, this.velo.y / fps)
+			.translate(this.velo.multiply(1 / fps))
 			.rotate(this.getCenter().x, this.getCenter().y, this.angVelo / fps);
 		return this;
 	}
@@ -155,8 +155,8 @@ class PolygonItem{
 
 		//碰撞後立即分開, 防止多次碰撞
 		while(Polygon.isIntersected(a.poly, b.poly)){
-			if(!a.fixed) a.poly = a.poly.translate((a.getCenter().x - intersectedCentroid.x) / 10, (a.getCenter().y - intersectedCentroid.y) / 10)
-			if(!b.fixed) b.poly = b.poly.translate((b.getCenter().x - intersectedCentroid.x) / 10, (b.getCenter().y - intersectedCentroid.y) / 10)
+			if(!a.fixed) a.poly = a.poly.translate(new Vector((a.getCenter().x - intersectedCentroid.x) / 1000, (a.getCenter().y - intersectedCentroid.y) / 1000))
+			if(!b.fixed) b.poly = b.poly.translate(new Vector((b.getCenter().x - intersectedCentroid.x) / 1000, (b.getCenter().y - intersectedCentroid.y) / 1000))
 		}
 
 	}
