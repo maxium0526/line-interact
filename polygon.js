@@ -79,6 +79,20 @@ class Polygon{
 		}
 		return points;
 	}
+
+	static getIntersectionLine(a, b){
+		let linesA = [];
+		let linesB = [];
+		for(let lineA of a.getLines()){
+			for(let lineB of b.getLines()){
+				if(Line.isIntersected(lineA, lineB)){
+					if(linesA.filter(n=>n.equals(lineA)).length==0) linesA.push(lineA);
+					if(linesB.filter(n=>n.equals(lineB)).length==0) linesB.push(lineB);
+				}
+			}
+		}
+		return [[...new Set(linesA)], [...new Set(linesB)]];
+	}
 }
 
 class RectangleBuilder{

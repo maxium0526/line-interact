@@ -105,6 +105,10 @@ class Line{
 		return this;
 	}
 
+	equals(n){
+		return this.p1.equals(n.p1) && this.p2.equals(n.p2);
+	}
+
 	static isOverlappedOnAxis(a, b, axis){
 		if(!['x', 'y'].includes(axis)) return null;
 		let pa = a.project(axis);
