@@ -107,14 +107,11 @@ class PolygonItem{
 			by = (bv.y * (b.mass - a.mass) + 2 * a.mass * av.y) / (a.mass + b.mass);
 		}
 
-		if(Math.pow(ax,2)+Math.pow(ay,2)+Math.pow(bx,2)+Math.pow(by,2)<100){
-			if(Math.abs(surfaceA.getSlape()-surfaceB.getSlape())<0.05){
+		if(Math.pow(ax,2)+Math.pow(ay,2)+Math.pow(bx,2)+Math.pow(by,2)<10){			
 				ax=0;
 				ay=0;
 				bx=0;
-				by=0;
-			}
-			
+				by=0;			
 		}
 
 		ax *= 0.8;
@@ -155,8 +152,10 @@ class PolygonItem{
 
 		//碰撞後立即分開, 防止多次碰撞
 		while(Polygon.isIntersected(a.poly, b.poly)){
-			if(!a.fixed) a.poly = a.poly.translate(new Vector((a.getCenter().x - intersectedCentroid.x) / 1000, (a.getCenter().y - intersectedCentroid.y) / 1000))
-			if(!b.fixed) b.poly = b.poly.translate(new Vector((b.getCenter().x - intersectedCentroid.x) / 1000, (b.getCenter().y - intersectedCentroid.y) / 1000))
+			// if(!a.fixed) a.poly = a.poly.translate(new Vector((a.getCenter().x - intersectedCentroid.x) / 1000, (a.getCenter().y - intersectedCentroid.y) / 1000))
+			// if(!b.fixed) b.poly = b.poly.translate(new Vector((b.getCenter().x - intersectedCentroid.x) / 1000, (b.getCenter().y - intersectedCentroid.y) / 1000))
+			if(!a.fixed) a.poly = a.poly.translate(Vector.get(0.01, new Line(intersectedCentroid, a.getCenter()).getAngle()));
+			if(!b.fixed) b.poly = b.poly.translate(Vector.get(0.01, new Line(intersectedCentroid, b.getCenter()).getAngle()));
 		}
 
 	}
